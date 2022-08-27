@@ -22,6 +22,8 @@ module JekyllAdmin
       File.open(path, "wb") do |file|
         file.write(content)
       end
+      # wait a couple seconds for the incremental generation
+      sleep(2.0)
       # we should fully process in dev mode for tests to pass
       if ENV["RACK_ENV"] == "production"
         site.read
